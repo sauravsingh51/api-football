@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.saurav.apifootball.model.Country;
 import com.saurav.apifootball.model.Leagues;
 import com.saurav.apifootball.model.TeamStanding;
@@ -38,6 +39,7 @@ public class FootballApiHttpClient {
 		this.restTemplate = restTemplate;
 	}
 
+	@HystrixCommand(fallbackMethod = "getCountries_Fallback")
 	public Country[] getCountries() {
 		Map<String, String> queryParams = new HashMap<>();
 		queryParams.put(ACTION, COUNTRIESACTION);
@@ -48,6 +50,11 @@ public class FootballApiHttpClient {
 				.getBody();
 	}
 
+	private Country[] getCountries_Fallback() {
+		return new Country[] { new Country() };
+	}
+
+	@HystrixCommand(fallbackMethod = "getLeagues_Fallback")
 	public Leagues[] getLeagues(int countryId) {
 		Map<String, String> queryParams = new HashMap<>();
 		queryParams.put(ACTION, LEAGUESACTION);
@@ -56,6 +63,12 @@ public class FootballApiHttpClient {
 		return this.restTemplate
 				.exchange(builder.toUriString(), HttpMethod.GET, new HttpEntity<>(getHeaders()), Leagues[].class)
 				.getBody();
+	}
+
+	private Leagues[] getLeagues_Fallback(int countryId) {
+		Leagues leagues = new Leagues();
+		leagues.setCountryId(countryId);
+		return new Leagues[] { leagues };
 	}
 
 	public TeamStanding[] getTeamStanding(int leagueId) {
@@ -68,10 +81,17 @@ public class FootballApiHttpClient {
 				.getBody();
 	}
 
+	@HystrixCommand(fallbackMethod = "getTeamStanding_Fallback")
 	private UriComponentsBuilder getUriComponentsBuilder(String url, Map<String, String> queryParams) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url).queryParam(KEY, apiKey);
 		queryParams.forEach(builder::queryParam);
 		return builder;
+	}
+
+	private TeamStanding[] getTeamStanding_Fallback(int leagueId) {
+		TeamStanding teamStanding = new TeamStanding();
+		teamStanding.setLeagueId(leagueId);
+		return new TeamStanding[] { teamStanding };
 	}
 
 	private HttpHeaders getHeaders() {

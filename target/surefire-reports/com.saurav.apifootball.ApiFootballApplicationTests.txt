@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.saurav.apifootball.ApiFootballApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.868 s - in com.saurav.apifootball.ApiFootballApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.421 s - in com.saurav.apifootball.ApiFootballApplicationTests
