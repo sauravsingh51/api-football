@@ -1,0 +1,15 @@
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/model/Country.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/security/WebSecurityConfig.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/advice/ExceptionControllerAdvice.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/model/Leagues.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/service/TeamStandingService.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/service/TeamStandingServiceImpl.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/httpclient/FootballApiHttpClient.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/model/TeamStanding.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/dto/TeamStandingRequest.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/config/SwaggerConfig.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/ApiFootballApplication.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/exception/RestApiError.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/exception/BadRequestException.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/dto/TeamStandingDto.java
+/Users/imgod/Downloads/api-football/src/main/java/com/saurav/apifootball/controller/TeamStandingController.java
