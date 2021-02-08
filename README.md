@@ -22,3 +22,7 @@
  4. Use spring security token as password and "user" as username to login to the swagger-ui and access the api'
  
       ![Swagger-UI](swagger.jpg)
+
+ 5. TO run sonar analysis use mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5bbd68121cee08e4e9de2df0d2d03cbe5e7d182d
+
+      ![sonar](sonar.jpg)
