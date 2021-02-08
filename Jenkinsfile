@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    
     stages {
         stage('Build') { 
             steps {
@@ -21,10 +16,20 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
+      stage('Build Docker Image'){
+        steps {
+          sh 'docker build -t apifootball:latest .'
         }
+      }
+      stage('Run Container') {
+        steps {
+          sh 'docker run -p 8080:8080 apifootball'
+        }
+      }
+      stage('Deliver') {
+          steps {
+              sh './jenkins/scripts/deliver.sh'
+          }
+      }
     }
 }
